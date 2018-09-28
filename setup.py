@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 from codecs import open
 from os import path
 
-__version__ = '0.0.1'
+__version__ = '0.0.3'
 
 here = path.abspath(path.dirname(__file__))
 
@@ -30,11 +30,11 @@ setup(
       'Intended Audience :: Developers',
       'Programming Language :: Python :: 3',
     ],
-    keywords='',
+    keywords='AWS Secrets Manager',
     packages=find_packages(exclude=['docs', 'tests*']),
     include_package_data=True,
     author='Spacetime Labs',
     install_requires=install_requires,
     dependency_links=dependency_links,
-    author_email='devs@spacetimelabs.ai'
+    author_email='devs@spacetimeanalytics.com'
 )
