@@ -25,7 +25,7 @@ Or clone the repo:
 Contributing
 ------------
 
-pip install requirements.txt
+pip install requirements-dev.txt
 tox
 
 Example
