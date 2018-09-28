@@ -11,11 +11,12 @@ class Vault(object):
     Check the TESTs out for usage examples
     """
 
-    def __init__(self, secrets, **kwargs):
+    def __init__(self, secrets, fail=False, **kwargs):
         if not secrets:
             return
         if isinstance(secrets, six.text_type):
             secrets = [secrets]
+        self._fail = fail
         self._client = self._get_secretsmanager_connection(**kwargs)
         self._vault = self._get_aws_retrieve_secrets(secrets)
 
@@ -23,7 +24,12 @@ class Vault(object):
         return boto3.client('secretsmanager', **kwargs)
 
     def _get_aws_retrieve_secret(self, secret):
-        response = self._client.get_secret_value(SecretId=secret)
+        response = {}
+        try:
+            response = self._client.get_secret_value(SecretId=secret)
+        except Exception as error:
+            if self._fail:
+                raise error
         return response.get('SecretString', '{}')
 
     def _get_aws_retrieve_secrets(self, secrets):
