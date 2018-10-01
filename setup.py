@@ -10,13 +10,6 @@ here = path.abspath(path.dirname(__file__))
 with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
-# get the dependencies and installs
-with open(path.join(here, 'requirements.txt'), encoding='utf-8') as f:
-    all_reqs = f.read().split('\n')
-
-install_requires = [x.strip() for x in all_reqs if 'git+' not in x]
-dependency_links = [x.strip().replace('git+', '') for x in all_reqs if x.startswith('git+')]
-
 setup(
     name='awsvault',
     version=__version__,
@@ -34,7 +27,8 @@ setup(
     packages=find_packages(exclude=['docs', 'tests*']),
     include_package_data=True,
     author='Spacetime Labs',
-    install_requires=install_requires,
-    dependency_links=dependency_links,
-    author_email='devs@spacetimeanalytics.com'
+    install_requires=[
+        'boto>=1.9.0,<2.0.0'
+    ],
+    author_email='dev@spacetimelabs.ai'
 )
