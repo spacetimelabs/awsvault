@@ -1,6 +1,8 @@
 aws-vault
 ===============================
 
+![travis-ci](https://api.travis-ci.org/spacetimelabs/awsvault.svg)
+
 version number: 0.0.1
 author: Spacetime Labs
 
