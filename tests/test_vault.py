@@ -8,7 +8,7 @@ from awsvault import Vault
 
 
 def test_should_return_secrets_from_aws_secrets_manager():
-    with mock.patch('awsvault.boto3') as boto3:
+    with mock.patch('awsvault.core.boto3') as boto3:
         boto3.client().get_secret_value.return_value = {
             'SecretString': json.dumps({
                 'EMAIL_USER': 'user-secret',
@@ -26,7 +26,7 @@ def test_should_return_secrets_from_aws_secrets_manager():
 
 
 def test_override_secrets():
-    with mock.patch('awsvault.boto3') as boto3:
+    with mock.patch('awsvault.core.boto3') as boto3:
         boto3.client().get_secret_value.return_value = {
             'SecretString': json.dumps({
                 'EMAIL_USER': 'user-secret',
@@ -47,7 +47,7 @@ def test_override_secrets():
 
 
 def test_override_secrets_using_fn():
-    with mock.patch('awsvault.boto3') as boto3:
+    with mock.patch('awsvault.core.boto3') as boto3:
         boto3.client().get_secret_value.return_value = {
             'SecretString': json.dumps({
                 'EMAIL_USER': 'user-secret',
