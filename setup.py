@@ -28,7 +28,7 @@ setup(
     include_package_data=True,
     author='Spacetime Labs',
     install_requires=[
-        'boto>=1.9.0,<2.0.0'
+        'boto3>=1.9.0,<2.0.0'
     ],
     author_email='dev@spacetimelabs.ai'
 )
