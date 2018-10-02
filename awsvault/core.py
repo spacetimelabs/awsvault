@@ -18,7 +18,7 @@ class Vault(object):
         self._vault = {}
         self._look_first = look_first or os.environ
 
-        if isinstance(secrets, six.text_type):
+        if isinstance(secrets, six.string_types):
             secrets = [secrets]
 
         try:
