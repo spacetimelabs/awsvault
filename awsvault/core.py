@@ -18,6 +18,10 @@ class Vault(object):
         self._vault = {}
         self._look_first = look_first or os.environ
 
+        if not secrets:
+            self._logger.warning('Empty secrets. Environment will be used instead.', exc_info=True)
+            return
+
         if isinstance(secrets, six.string_types):
             secrets = [secrets]
 
@@ -34,7 +38,7 @@ class Vault(object):
         value = None
         if callable(self._look_first):
             value = self._look_first(name)
-        elif isinstance(self._look_first, dict):
+        elif isinstance(self._look_first, dict) or hasattr(self._look_first, 'get'):
             value = self._look_first.get(name)
 
         if value is not None:

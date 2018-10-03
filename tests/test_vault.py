@@ -1,4 +1,5 @@
 import json
+import os
 try:
     from unittest import mock
 except:
@@ -66,3 +67,19 @@ def test_override_secrets_using_fn():
 
     assert email_user == "user-secret"
     assert email_password == "test-override-fn"
+
+
+def test_should_work_without_secretmanager_conection():
+    """
+    Using tests or in the development mode, we might want to
+    use environment variables rather than having credentials to access AWS
+    """
+    # Given an environment
+    os.environ["EMAIL_HOST"] = "TEST_ENV"
+
+    # When we use vault
+    no_secrets = None
+    vault = Vault(no_secrets)
+
+    # Then
+    assert vault.get("EMAIL_HOST") == "TEST_ENV"
