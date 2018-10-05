@@ -27,7 +27,8 @@ class Vault(object):
                 response = client.get_secret_value(SecretId=secret)
                 value = response.get('SecretString', '{}')
                 self._vault.update(json.loads(value))
-        except botocore.exceptions.ClientError as exc:
+        except (botocore.exceptions.ClientError,
+                botocore.exceptions.BotoCoreError) as exc:
             self._logger.warning('AWS Secrets Manager error', exc_info=True)
 
     def get(self, name, default=None):
