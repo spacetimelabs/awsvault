@@ -6,6 +6,8 @@ import logging
 import boto3
 import botocore.exceptions
 
+ # :) 
+
 
 class Vault(object):
     """
