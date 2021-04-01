@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 from codecs import open
 from os import path
 
-__version__ = '0.1.2'
+__version__ = '0.1.3'
 
 here = path.abspath(path.dirname(__file__))
 
@@ -29,7 +29,7 @@ setup(
     include_package_data=True,
     author='Spacetime Labs',
     install_requires=[
-        'boto3>=1.9.0,<1.18.0'
+        'boto3>=1.16.0,<2.0.0'
     ],
     author_email='dev@spacetimelabs.ai'
 )
