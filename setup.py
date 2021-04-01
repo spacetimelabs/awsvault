@@ -15,6 +15,7 @@ setup(
     version=__version__,
     description='AWS secrets manager helper',
     long_description=long_description,
+    long_description_content_type='text/markdown',
     url='https://github.com/spacetimelabs/awsvault',
     download_url='https://github.com/spacetimelabs/awsvault/tarball/' + __version__,
     license='BSD',
